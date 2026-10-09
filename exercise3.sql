@@ -10,7 +10,7 @@ TO vtapp_user;
 
 \c vtapp postgres;
 
-GRANT USAGE, CREATE
+GRANT CREATE
 ON SCHEMA public
 TO vtapp_user;
 
