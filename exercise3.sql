@@ -10,6 +10,10 @@ TO vtapp_user;
 
 \c vtapp postgres;
 
+GRANT USAGE, CREATE
+ON SCHEMA public
+TO vtapp_user;
+
 GRANT ALL Privileges ON all tables IN schema public TO vtapp_user;
 
 \c vtapp vtapp_user;
