@@ -1,0 +1,41 @@
+create database campaign_db
+\c campaign_db
+
+CREATE TABLE email_subscribers (
+    id SERIAL PRIMARY KEY,
+    email TEXT,
+    city TEXT,
+    phone TEXT
+);
+
+\copy email_subscribers(email,phone,city) FROM '/Users/kanishkrichhariya10/Desktop/email_subscribers.csv' WITH (FORMAT CSV, HEADER TRUE);
+
+QUERY 1
+
+SELECT distinct(city) FROM email_subscribers
+
+
+QUERY 2
+
+SELECT city, count(*) AS responded_people
+FROM email_subscribers
+GROUP BY city;
+
+QUERY 3
+
+SELECT city, count(*) AS responded_people
+FROM email_subscribers
+GROUP BY city
+ORDER BY responded_people DESC
+LIMIT 1;
+
+QUERY 4
+
+SELECT distinct(split(email, '@', 2)) AS email_domains
+FROM email_subscribers;
+
+QUERY 5
+
+SELECT distinct(split(email, '@', 2)) AS email_domains
+FROM email_subscribers
+GROUP BY split_part(email, '@',2);
