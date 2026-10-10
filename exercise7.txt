@@ -1,0 +1,54 @@
+QUES 1
+
+(Scan type)-  Seq Scan, Index Scan, Index Only Scan
+(on table)- the table that is being scanned
+(cost=a..b)- a is startup cost, b is total cost
+(rows) - Estimated number of rows returned by that node
+(filter)- condition that is applied to the rows
+
+QUES 2
+
+2.1 here count(id) = rows tells us that full tabel scan is estimated => this is a seq scan
+2.2 scanning full table is wasteful. we can index on user_id. Index scan can be a better approach if only some rows has to be returned
+
+QUES 3
+
+here all are equality conditions so order wont matter.
+
+QUES 4
+
+4.1
+
+Explain 
+Select *
+from comments as c
+inner join users as u
+on c.user_id = u.id ;
+
+                               QUERY PLAN                               
+------------------------------------------------------------------------
+ Hash Join  (cost=13.15..38.37 rows=1200 width=580)
+   Hash Cond: (c.user_id = u.id)
+   ->  Seq Scan on comments c  (cost=0.00..22.00 rows=1200 width=40)
+   ->  Hash  (cost=11.40..11.40 rows=140 width=540)
+         ->  Seq Scan on users u  (cost=0.00..11.40 rows=140 width=540)
+(5 rows)
+
+4.2
+
+Explain 
+Select c.*, u.*
+from comments as c,
+(select * from users) as u
+where c.user_id = u.id ;
+
+                             QUERY PLAN                              
+----------------------------------------------------------------------
+ Hash Join  (cost=13.15..38.37 rows=1200 width=580)
+   Hash Cond: (c.user_id = users.id)
+   ->  Seq Scan on comments c  (cost=0.00..22.00 rows=1200 width=40)
+   ->  Hash  (cost=11.40..11.40 rows=140 width=540)
+         ->  Seq Scan on users  (cost=0.00..11.40 rows=140 width=540)
+(5 rows)
+
+no one is better. same outout is commng
