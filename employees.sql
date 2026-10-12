@@ -20,32 +20,32 @@ CREATE TABLE Commissions(
 	commission_amount INTEGER NOT NULL
 );
 
-INSERT INTO departments (id, name)
+INSERT INTO departments (name)
 VALUES
-(1,'Banking'),
-(2,'Insurance'),
-(3,'Services');
+('Banking'),
+('Insurance'),
+('Services');
 
 
-INSERT INTO employees (id, name, salary, department_id)
+INSERT INTO employees (name, salary, department_id)
 VALUES
-(1,'Chris Gayle',1000000,1),
-(2,'Michael Clarke',800000,2),
-(3,'Rahul Dravid',700000,1),
-(4,'Ricky Pointing',600000,2),
-(5,'Albie Morkel',650000,2),
-(6,'Wasim Akram',750000,3);
+('Chris Gayle',1000000,1),
+('Michael Clarke',800000,2),
+('Rahul Dravid',700000,1),
+('Ricky Pointing',600000,2),
+('Albie Morkel',650000,2),
+('Wasim Akram',750000,3);
 
-INSERT INTO commissions (id, employee_id, commission_amount)
+INSERT IN commissions (employee_id, commission_amount)
 VALUES
-(1,1,5000),
-(2,2,3000),
-(3,34000),
-(4,1,4000),
-(5,2,3000),
-(6,4,2000),
-(7,5,1000),
-(8,6,5000);
+(1,5000),
+(2,3000),
+(3,4000),
+(1,4000),
+(2,3000),
+(4,2000),
+(5,1000),
+(6,5000);
 
 
 --QUERRY 1
