@@ -80,8 +80,8 @@ LIMIT 1;
 --QUERRY 2
 
 SELECT i.*
-FROM images as i
-JOIN friends as f
+FROM friends as f
+JOIN images as i
 ON f.friend_id = i.image_user
 WHERE f.user_id = 1;
 
