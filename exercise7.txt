@@ -34,6 +34,11 @@ on c.user_id = u.user_id ;
          ->  Seq Scan on users u  (cost=0.00..18.60 rows=860 width=4)
 (5 rows)
 
+cost=29.35..53.63 -> estimated cost(startup and total)
+rows=1130 -> estimated rows
+width=44 -> estimated width
+Hash cond -> condition that is being used for matching
+Seq scan: Reads a table sequentially
 
 
 4.2
