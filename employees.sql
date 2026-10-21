@@ -20,6 +20,12 @@ CREATE TABLE Commissions(
 	commission_amount INTEGER NOT NULL
 );
 
+CREATE INDEX idx_employees_department_id
+ON Employees(department_id);
+
+CREATE INDEX idx_commissions_employee_id
+ON Commissions(employee_id);
+
 INSERT INTO departments (name)
 VALUES
 ('Banking'),
