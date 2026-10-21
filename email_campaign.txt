@@ -40,4 +40,4 @@ SELECT distinct(split_part(email, '@', 2)) AS email_domains, COUNT(*) as count
 FROM email_subscribers
 GROUP BY split_part(email, '@',2)
 ORDER BY count DESC
-LIMIT 1;
+FETCH FIRST 1 ROW WITH TIES;
