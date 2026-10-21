@@ -8,7 +8,7 @@ CREATE TABLE email_subscribers (
     phone TEXT
 );
 
-\copy email_subscribers(email,phone,city) FROM '/Users/kanishkrichhariya10/Desktop/email_subscribers.csv' WITH (FORMAT CSV, HEADER TRUE);
+\copy email_subscribers(email,phone,city) FROM '/Users/kanishkrichhariya10/Desktop/email_subscribers.csv' WITH (FORMAT CSV);
 
 QUERY 1
 
@@ -31,11 +31,13 @@ LIMIT 1;
 
 QUERY 4
 
-SELECT distinct(split(email, '@', 2)) AS email_domains
+SELECT distinct(split_part(email, '@', 2)) AS email_domains
 FROM email_subscribers;
 
 QUERY 5
 
-SELECT distinct(split(email, '@', 2)) AS email_domains
+SELECT distinct(split_part(email, '@', 2)) AS email_domains, COUNT(*) as count
 FROM email_subscribers
-GROUP BY split_part(email, '@',2);
+GROUP BY split_part(email, '@',2)
+ORDER BY count DESC
+LIMIT 1;
