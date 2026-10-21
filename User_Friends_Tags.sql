@@ -79,7 +79,7 @@ LIMIT 1;
 
 --QUERRY 2
 
-SELECT i.*
+SELECT i.filename
 FROM friends as f
 JOIN images as i
 ON f.friend_id = i.image_user
