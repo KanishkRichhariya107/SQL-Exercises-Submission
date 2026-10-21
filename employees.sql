@@ -65,11 +65,14 @@ ORDER BY total_commission DESC
 LIMIT 1;
 
 --QUERRY 2
-
 SELECT *
 FROM Employees
-ORDER BY Salary DESC
-LIMIT 1 OFFSET 3;
+WHERE salary = (
+    SELECT DISTINCT salary
+    FROM Employees
+    ORDER BY salary DESC
+    OFFSET 3 LIMIT 1
+);
 
 --QUERRY 3
 
