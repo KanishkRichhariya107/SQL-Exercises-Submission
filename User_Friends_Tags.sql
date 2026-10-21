@@ -79,9 +79,9 @@ LIMIT 1;
 
 --QUERRY 2
 
-SELECT *
-FROM friends as f
-LEFT JOIN images as i
+SELECT i.*
+FROM images as i
+JOIN friends as f
 ON f.friend_id = i.image_user
 WHERE f.user_id = 1;
 
