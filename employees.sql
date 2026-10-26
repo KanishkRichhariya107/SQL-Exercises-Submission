@@ -55,7 +55,6 @@ VALUES
 
 
 --QUERRY 1
-
 SELECT e.id, e.name, SUM(c.commission_amount) as total_commission
 FROM Employees As e
 LEFT JOIN Commissions AS c

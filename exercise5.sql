@@ -9,17 +9,17 @@
 --  public | users | table | postgres
 -- (2 rows)
 
-CREATE DATABASE vtapp_restored;
+CREATE DATABASE restored;
 
 \q
 
 pg_dump -U postgres vtapp > backup.sql
 
-psql -U postgres vtapp_restored < backup.sql
+psql -U postgres restored < backup.sql
 
 psql -U postgres
 
-\c vtapp_restored
+\c restored
 
 \dt
 --            List of tables
